@@ -13,7 +13,8 @@ namespace Homework3
 
 
         public double re;
-
+        
+        #region Math
         public Complex Plus(Complex x)
         {
             return new Complex(re + x.re, im + x.im);
@@ -29,7 +30,7 @@ namespace Homework3
         {
             return new Complex ((re * x.re - im * x.im),(re * x.im + im * x.re));
         }
-
+        #endregion Math
 
         //Переписал в структуру конструктор, чтобы облегчить решение
         public Complex(double re, double im)
@@ -53,6 +54,8 @@ namespace Homework3
     {
         static void Main(string[] args)
         {
+
+            #region set number
             //Инициализировал 0, чтобы сократить и убрать лишние переменные
             Complex complex01 = new Complex(0,0);
             Console.Write("(1) Введите действительную часть комплексного числа: ");
@@ -70,9 +73,9 @@ namespace Homework3
 
             Console.WriteLine($"Первое комплексное число: {complex01}");
             Console.WriteLine($"Второе комплексное число: {complex02}");
+            #endregion set number
 
-
-           //Вывод всех математических операций с комплексными числами
+            //Вывод всех математических операций с комплексными числами
             Console.WriteLine($"Сумма комплексных чисел {complex01} и {complex02} = {complex01.Plus(complex02)}");
             Console.WriteLine($"Разность комплексных чисел = {complex01.Minus(complex02)}");
             Console.WriteLine($"Произведение комплексных чисел = {complex01.Product(complex02)}");

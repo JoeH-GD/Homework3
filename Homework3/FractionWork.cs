@@ -61,6 +61,7 @@ namespace Homework3
 
         public Fraction (int numerator, int denominator, int integerPart)
         {
+            //проверка на ненулевой знаменатель
             if (denominator == 0)
             {
                 throw new ArgumentException("Cannot devide by 0!");
@@ -72,6 +73,8 @@ namespace Homework3
         }
 
         #region Math
+
+        //Метод упрощения дробей. Умеет выделять целую часть
         public Fraction SimplifyFraction()
         {
             if (numerator > denominator)
@@ -125,26 +128,35 @@ namespace Homework3
             return new Fraction(numerator * x.numerator, denominator * x.denominator, integerPart * x.integerPart);
         }
 
+        //На делении возможные целые части усложнили мне жизнь, но мне удалось их вписать
         public Fraction Devision(Fraction x)
         {
-            if (integerPart > 0 & x.integerPart > 0)
+            if (integerPart > 0) 
             {
                 numerator = integerPart * denominator + numerator;
+             
+                return new Fraction(numerator * x.denominator, denominator * x.numerator, 0);
+            }
+
+            if (x.integerPart > 0)
+            {
                 x.numerator = x.integerPart * denominator + x.numerator;
                 return new Fraction(numerator * x.denominator, denominator * x.numerator, 0);
             }
 
-            return new Fraction(numerator * x.denominator, denominator * x.numerator, integerPart);
+        //Если целой части все-таки нет
+           else return new Fraction(numerator * x.denominator, denominator * x.numerator, integerPart);
         }
 
         #endregion Math
 
+        //Перекгрузка с учетом наличлия или отсуствия целой части
         public override string ToString()
         {
 
-            if (integerPart <= 0) return $"Fraction is {numerator}/{denominator}";
+            if (integerPart == 0) return $"Fraction is {numerator}/{denominator}";
 
-
+            //После упрощения дробей может возникнуть и такая ситуация
             else if (denominator == 1) return $"You have new integer number: {integerPart} and no fraction";
 
             else return $"Integer part is {integerPart} and fraction is  {numerator}/{denominator}";
@@ -158,7 +170,7 @@ namespace Homework3
         static void Main(string[] args)
         {
 
-
+            #region set fraction
             Fraction fraction01 = new Fraction(1, 1, 0);
             Console.Write("Enter first fraction numerator value:");
             fraction01.Numerator = int.Parse(Console.ReadLine());
@@ -178,6 +190,8 @@ namespace Homework3
             Console.WriteLine(fraction02);
 
             Console.WriteLine($"In decimal it's {fraction02.DecimalFraction}");
+
+            #endregion set fraction
 
             //Цикл стоит здесь, потому что я не хочу заставлять пользователя постоянно вводить разные значения дробей
             #region Menu

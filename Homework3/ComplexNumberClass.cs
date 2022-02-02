@@ -56,6 +56,7 @@ namespace Homework3
             this.im = im;
         }
 
+        #region Math
         //Добавил математику, переписал структуры на класс
         public ComplexClass Plus(ComplexClass x)
         {
@@ -72,7 +73,7 @@ namespace Homework3
         {
             return new ComplexClass((re * x.re - im * x.im), (re * x.im + im * x.re));
         }
-
+        #endregion Math
         //Вывод на консоль
         public override string ToString()
         {
@@ -86,6 +87,7 @@ namespace Homework3
     {
         static void Main(string[] args)
         {
+            #region set coplex
             ComplexClass complex01 = new ComplexClass(5, 3);
 
             //Добавил возможность менять число через свойста
@@ -103,6 +105,7 @@ namespace Homework3
 
             Console.WriteLine($"Первое комплексное число: {complex01}");
             Console.WriteLine($"Второе комплексное число: {complex02}");
+            #endregion set complex
 
             #region Menu
             Console.WriteLine("Actions for complex numbers");
