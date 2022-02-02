@@ -72,7 +72,7 @@ namespace Homework3
         {
             return new ComplexClass((re * x.re - im * x.im), (re * x.im + im * x.re));
         }
-        
+
         //Вывод на консоль
         public override string ToString()
         {
@@ -82,8 +82,8 @@ namespace Homework3
         }
 
     }
-        class Class1
-     {
+    class ComplexNumberClass
+    {
         static void Main(string[] args)
         {
             ComplexClass complex01 = new ComplexClass(5, 3);
@@ -93,8 +93,8 @@ namespace Homework3
             complex01.Re = double.Parse(Console.ReadLine());
             Console.Write("(1) Введите мнимую часть комплексного числа: ");
             complex01.Im = double.Parse(Console.ReadLine());
-           
-            
+
+
             ComplexClass complex02 = new ComplexClass(3, -1);
             Console.Write("(2) Введите действительную часть комплексного числа: ");
             complex02.Re = double.Parse(Console.ReadLine());
@@ -104,12 +104,48 @@ namespace Homework3
             Console.WriteLine($"Первое комплексное число: {complex01}");
             Console.WriteLine($"Второе комплексное число: {complex02}");
 
+            #region Menu
+            Console.WriteLine("Actions for complex numbers");
+            Console.WriteLine("===================");
+            Console.WriteLine("1 -> Plus");
+            Console.WriteLine("2 -> Minus");
+            Console.WriteLine("3 -> Product");
+            Console.WriteLine("0 -> Quit");
+            Console.WriteLine("===================");
 
-            Console.WriteLine($"Сумма комплексных чисел {complex01} и {complex02} = {complex01.Plus(complex02)}");
-            Console.WriteLine($"Разность комплексных чисел = {complex01.Minus(complex02)}");
-            Console.WriteLine($"Произведение комплексных чисел = {complex01.Product(complex02)}");
+            bool isInMenu = true;
 
-            Console.ReadLine();
+            while (isInMenu)
+            {
+
+                Console.Write("Enter the number of action ");
+                int number = int.Parse(Console.ReadLine());
+                switch (number)
+                {
+                    case 0:
+                        isInMenu = false;
+                        break;
+
+                    case 1:
+                        Console.WriteLine($"Сумма комплексных чисел {complex01} и {complex02} = {complex01.Plus(complex02)}");
+                        break;
+
+                    case 2:
+                        Console.WriteLine($"Разность комплексных чисел = {complex01.Minus(complex02)}");
+                        break;
+                    case 3:
+                        Console.WriteLine($"Произведение комплексных чисел = {complex01.Product(complex02)}");
+                        break;
+
+                    default:
+                        Console.WriteLine("No action chosen");
+                        break;
+                }
+
+                #endregion Menu
+
+                Console.ReadLine();
+            }
         }
     }
 }

@@ -33,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>Homework3.Class1</StartupObject>
+    <StartupObject>Homework3.ComplexNumberClass</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -46,7 +46,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="ComplexNumberClass.cs" />
+    <Compile Include="FractionWork.cs" />
+    <Compile Include="TryParseWork.cs" />
     <Compile Include="SturctHomework.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
